@@ -7,24 +7,25 @@
    digital notebook.
    ============================================ */
 :root {
-  --bg: #faf7f0;
+  --bg: #fff8fc;
   --surface: #ffffff;
-  --text: #2b2b28;
-  --muted: #706f68;
-  --border: #e3ddcf;
+  --text: #4b2c3d;
+  --muted: #8f6b7b;
+  --border: #f3d9e6;
 
-  --accent: #2f5d62;
-  --accent-soft: #e4ece9;
-  --danger: #b6532c;
-  --danger-soft: #f3e3da;
+  --accent: #e56b9a;
+  --accent-soft: #fdebf3;
+  --danger: #c95a86;
+  --danger-soft: #fde3ec;
 
-  --cat-tech: #2f5d62;
-  --cat-lifestyle: #b6532c;
-  --cat-education: #8a6d3b;
-  --cat-default: #6b6a63;
+  --cat-tech: #f4a4c2;
+  --cat-lifestyle: #ef85b3;
+  --cat-education: #db6d9b;
+  --cat-default: #d4a8bb;
 
   --radius: 10px;
-  --shadow: 0 1px 2px rgba(43, 43, 40, 0.04), 0 6px 16px rgba(43, 43, 40, 0.06);
+  --shadow: 0 3px 8px rgba(229, 107, 154, 0.10),
+             0 12px 28px rgba(229, 107, 154, 0.14);
 }
 
 * {
