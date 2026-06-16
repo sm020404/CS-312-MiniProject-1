@@ -14,9 +14,10 @@ app.use(express.urlencoded({ extended: true }));
 app.use(methodOverride('_method'));               
 app.use(express.static(path.join(__dirname, 'public')));
 
-// ---- "Database" (in-memory only — resets on restart) ----
+// Available categories users can assign to a blog post
 const CATEGORIES = ['Tech', 'Lifestyle', 'Education'];
 
+// Store all blog posts in memory while the server is running
 let posts = [
   {
     id: '1',
@@ -50,9 +51,7 @@ function formatDate(iso) {
   });
 }
 
-// ---- Routes ----
-
-// Home page: list posts (optionally filtered by category)
+//Display the homepage and all blog posts
 app.get('/', (req, res) => {
   const { category } = req.query;
   const activeCategory = category && CATEGORIES.includes(category) ? category : 'All';
