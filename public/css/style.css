@@ -1,14 +1,10 @@
 /* ============================================
-   Marginalia — design tokens
-   A quiet, paper-and-ink editorial feel, built
-   around the idea of posts as marginal notes
-   pinned to a shared notebook spine.
-   ============================================ */
-/* ============================================
-   Marginalia — design tokens
-   A quiet, paper-and-ink editorial feel, built
-   around the idea of posts as marginal notes
-   pinned to a shared notebook spine.
+   Blush Notes — design tokens
+   A soft, elegant editorial aesthetic inspired
+   by handwritten journals, delicate pink tones,
+   and cozy stationery. Posts are displayed as
+   thoughtful notes collected in a modern
+   digital notebook.
    ============================================ */
 :root {
   --bg: #faf7f0;
