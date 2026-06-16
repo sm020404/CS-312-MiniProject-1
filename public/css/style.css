@@ -13,9 +13,9 @@
   --muted: #706f68;
   --border: #e3ddcf;
 
-  --accent: #2f5d62;       /* deep teal — primary actions */
+  --accent: #2f5d62;
   --accent-soft: #e4ece9;
-  --danger: #b6532c;       /* muted rust — destructive actions */
+  --danger: #b6532c;
   --danger-soft: #f3e3da;
 
   --cat-tech: #2f5d62;
