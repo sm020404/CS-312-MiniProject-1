@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Marginalia — A Blog</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,500;0,600;1,500&family=Inter:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="wrap">
+      <span class="kicker">est. 2026 · no database, just memory</span>
+      <h1 class="site-title">Marginalia</h1>
+      <p class="site-tagline">Notes, half-formed thoughts, and things worth writing down.</p>
+    </div>
+  </header>
+
+  <main class="wrap">
+
+    <section class="composer">
+      <h2>Write something</h2>
+      <form action="/posts" method="POST" class="post-form">
+        <div class="field-row">
+          <div class="field">
+            <label for="name">Your name</label>
+            <input type="text" id="name" name="name" placeholder="e.g. Sam Rivera" required>
+          </div>
+          <div class="field">
+            <label for="category">Category</label>
+            <select id="category" name="category">
+              <% categories.forEach(cat => { %>
+                <option value="<%= cat %>"><%= cat %></option>
+              <% }) %>
+            </select>
+          </div>
+        </div>
+
+        <div class="field">
+          <label for="title">Title</label>
+          <input type="text" id="title" name="title" placeholder="Give it a title" required>
+        </div>
+
+        <div class="field">
+          <label for="content">What's on your mind?</label>
+          <textarea id="content" name="content" rows="5" placeholder="Write your post..." required></textarea>
+        </div>
+
+        <button type="submit" class="btn btn-primary">Publish post</button>
+      </form>
+    </section>
+
+    <section class="feed">
+      <div class="feed-header">
+        <h2>Latest posts <span class="count">(<%= posts.length %>)</span></h2>
+        <form action="/" method="GET" class="filter-form">
+          <label for="filter" class="visually-hidden">Filter by category</label>
+          <select id="filter" name="category" onchange="this.form.submit()">
+            <option value="All" <%= activeCategory === 'All' ? 'selected' : '' %>>All categories</option>
+            <% categories.forEach(cat => { %>
+              <option value="<%= cat %>" <%= activeCategory === cat ? 'selected' : '' %>><%= cat %></option>
+            <% }) %>
+          </select>
+        </form>
+      </div>
+
+      <% if (posts.length === 0) { %>
+        <div class="empty-state">
+          <p>Nothing here yet for this category. Write the first post above, or switch categories.</p>
+        </div>
+      <% } else { %>
+        <div class="post-list">
+          <% posts.forEach(post => { %>
+            <article class="post-card" data-category="<%= post.category %>">
+              <div class="post-spine"></div>
+              <div class="post-body">
+                <div class="post-meta">
+                  <span class="post-category"><%= post.category %></span>
+                  <span class="post-date"><%= formatDate(post.createdAt) %></span>
+                </div>
+                <h3 class="post-title"><%= post.title %></h3>
+                <p class="post-author">by <%= post.name %></p>
+                <p class="post-content"><%= post.content %></p>
+                <div class="post-actions">
+                  <a href="/posts/<%= post.id %>/edit" class="btn btn-ghost">Edit</a>
+                  <form action="/posts/<%= post.id %>?_method=DELETE" method="POST" class="inline-form"
+                        onsubmit="return confirm('Delete this post? This cannot be undone.');">
+                    <button type="submit" class="btn btn-danger">Delete</button>
+                  </form>
+                </div>
+              </div>
+            </article>
+          <% }) %>
+        </div>
+      <% } %>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>Built with Node.js, Express, and EJS — posts live only as long as the server runs.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
