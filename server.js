@@ -5,13 +5,13 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 3000;
 
-// ---- View engine ----
+//Configure Express to use EJS templates from the views folder
 app.set('view engine', 'ejs');
 app.set('views', path.join(__dirname, 'views'));
 
-// ---- Middleware ----
-app.use(express.urlencoded({ extended: true })); // parse form submissions
-app.use(methodOverride('_method'));               // lets <form> send PUT/DELETE via ?_method=
+//Read data submitted through HTML forms
+app.use(express.urlencoded({ extended: true })); 
+app.use(methodOverride('_method'));               
 app.use(express.static(path.join(__dirname, 'public')));
 
 // ---- "Database" (in-memory only — resets on restart) ----
